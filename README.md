@@ -4,6 +4,25 @@
 
 ![](grpc-private-bff-example.png)
 
+```mermaid
+sequenceDiagram
+    participant Client
+    participant BFF
+    participant SA as Invoker Service Account
+    participant Server
+
+    Note over Client,Server: initialize BFF
+    BFF->>SA: Get ID token
+    SA-->>BFF: ID token
+
+    Note over Client,Server: request from client
+
+    Client->>BFF: HTTP/JSON request
+    BFF->>Server: gRPC request with ID token
+    Server-->>BFF: gRPC response
+    BFF->>Client: HTTP/JSON response
+```
+
 ## Usage
 
 - You need to have
