@@ -8,7 +8,6 @@ import (
 
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/reflection"
 
 	hellov1 "github.com/dtan4/grpc-private-bff-example/api/hello/v1"
 	"github.com/dtan4/grpc-private-bff-example/internal/log"
@@ -43,8 +42,6 @@ func realMain() error {
 
 	s := grpc.NewServer()
 	hellov1.RegisterHelloServiceServer(s, server.New(logger))
-
-	reflection.Register(s)
 
 	logger.Info("starting server", zap.Int("port", port))
 
