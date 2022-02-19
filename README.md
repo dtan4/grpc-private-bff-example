@@ -13,7 +13,7 @@
 
 ### Server
 
-- Deploy server to Cloud Build
+- Deploy server to Cloud Run
 
 ```bash
 PROJECT_ID=xxx make deploy
