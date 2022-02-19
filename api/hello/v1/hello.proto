@@ -4,8 +4,14 @@ package api.hello.v1;
 
 option go_package = "github.com/dtan4/grpc-private-bff-example/api/hello/v1;hellov1";
 
+import "google/api/annotations.proto";
+
 service HelloService {
-    rpc SayHello(SayHelloRequest) returns (SayHelloResponse) {}
+    rpc SayHello(SayHelloRequest) returns (SayHelloResponse) {
+        option (google.api.http) = {
+            get: "/v1/hello/sayhello/{name}",
+        };
+    }
 }
 
 message SayHelloRequest {
